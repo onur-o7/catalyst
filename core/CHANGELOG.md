@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.16.0
+
+### Minor Changes
+
+- [#1384](https://github.com/bigcommerce/catalyst/pull/1384) [`17692ca`](https://github.com/bigcommerce/catalyst/commit/17692caa3ff9b25180359d8a020470ece3e589f6) Thanks [@chanceaclark](https://github.com/chanceaclark)! - Pass customer ip address into requests that don't rely on cached values.
+
+### Patch Changes
+
+- [#1374](https://github.com/bigcommerce/catalyst/pull/1374) [`1f76f61`](https://github.com/bigcommerce/catalyst/commit/1f76f615b38bb41db770653bd8e7947cd6361b18) Thanks [@jorgemoya](https://github.com/jorgemoya)! - Prepend locale for redirected urls in tests.
+  More info: https://github.com/amannn/next-intl/issues/1335
+
+- [#1373](https://github.com/bigcommerce/catalyst/pull/1373) [`971033f`](https://github.com/bigcommerce/catalyst/commit/971033fc63181bad15aa46abb65b0d44501922c9) Thanks [@jorgemoya](https://github.com/jorgemoya)! - Add missing metadata in account settings page.
+
+- [#1370](https://github.com/bigcommerce/catalyst/pull/1370) [`655d518`](https://github.com/bigcommerce/catalyst/commit/655d518b2fd662614539467fff940b2b5ff78567) Thanks [@bc-svc-local](https://github.com/bc-svc-local)! - Update translations.
+
+- Updated dependencies [[`17692ca`](https://github.com/bigcommerce/catalyst/commit/17692caa3ff9b25180359d8a020470ece3e589f6)]:
+  - @bigcommerce/catalyst-client@0.9.0
+
 ## 0.15.0
 
 ### Minor Changes
