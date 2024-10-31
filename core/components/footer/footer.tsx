@@ -36,32 +36,8 @@ const socialIcons: Record<string, { icon: JSX.Element }> = {
   YouTube: { icon: <SiYoutube title="YouTube" /> },
 };
 
-const column1Links = [
-  {
-    href: '/create-registry',
-    title: 'column1.list.item1',
-  },
-  {
-    href: '/find-registry',
-    title: 'column1.list.item2',
-  },
-  {
-    href: '/categories',
-    title: 'column1.list.item3',
-  },
-];
-
-const column2Links = [
-  { href: '/about-us', title: 'column2.list.item1' },
-  { href: '/how-it-works', title: 'column2.list.item2' },
-  { href: '/discover-more', title: 'column2.list.item3' },
-  { href: '/benefits', title: 'column2.list.item4' },
-  { href: '/events', title: 'column2.list.item5' },
-];
-
 export const Footer = async () => {
   const customerId = await getSessionCustomerId();
-  const t = await getTranslations('Footer');
 
   const { data: response } = await client.fetch({
     document: LayoutQuery,
