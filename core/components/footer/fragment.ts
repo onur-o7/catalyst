@@ -50,15 +50,6 @@ export const FooterFragment = graphql(`
         }
       }
     }
-    brands(first: 5) {
-      edges {
-        node {
-          entityId
-          name
-          path
-        }
-      }
-    }
     categoryTree {
       name
       path

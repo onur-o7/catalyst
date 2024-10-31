@@ -38,11 +38,14 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./*"]
+      "~/*": [
+        "./*"
+      ]
     },
     "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json"
   },
   "include": [
+    "global.d.ts",
     "next-env.d.ts",
     "playwright.config.ts",
     "**/*.cjs",

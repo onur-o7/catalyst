@@ -1,3 +1,107 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --color-secondary: 179deg 46% 58%;
+    --color-secondary-dark: 179deg 46% 38%;
+    --color-primary: 207deg 89% 21%;
+    --color-error: 0deg 56% 43%;
+    --color-body: 210deg 20% 16%;
+  }
+}
+
+body {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: none !important;
+  -moz-text-size-adjust: none !important;
+  color: hsl(var(--color-body));
+}
+
+.bg-primary {
+  @apply text-white;
+}
+
+.bg-primary a {
+  @apply hover:text-turq;
+}
+
+.content-grid {
+  --padding-inline: 1rem;
+  --content-max-width: 1320px;
+  --breakout-max-width: 1500px;
+
+  --breakout-size: calc((var(--breakout-max-width) - var(--content-max-width)) / 2);
+
+  display: grid;
+  grid-template-columns:
+    [full-width-start] minmax(var(--padding-inline), 1fr)
+    [breakout-start] minmax(0, var(--breakout-size))
+    [content-start] min(100% - (var(--padding-inline) * 2), var(--content-max-width))
+    [content-end]
+    minmax(0, var(--breakout-size)) [breakout-end]
+    minmax(var(--padding-inline), 1fr) [full-width-end];
+}
+
+@media (width>1500px) {
+  .content-grid {
+    --content-max-width: 1200px;
+    --breakout-max-width: 1500px;
+  }
+}
+
+form.text-sm :is(input, select) {
+  font-size: inherit;
+}
+
+.content-grid > :not(.breakout, .full-width),
+.full-width > :not(.breakout, .full-width) {
+  grid-column: content;
+}
+
+.content-grid > .breakout {
+  grid-column: breakout;
+}
+
+.content-grid > .full-width {
+  grid-column: full-width;
+
+  display: grid;
+  grid-template-columns: inherit;
+}
+
+select,
+input:is([type='text'], [type='number'], [type='password']) {
+  --outline-color: var(--color-secondary);
+  display: block;
+  background-clip: padding-box;
+  font-size: 1.25rem;
+  min-height: calc(1.5em + 1rem + 2px);
+  padding: 0.5rem 1rem;
+  appearance: none;
+  &:focus,
+  &:focus-visible,
+  &:focus-within {
+    box-shadow: 0 0 0 0.25rem hsl(var(--outline-color) / 20%);
+    outline: 0;
+  }
+}
+
+button,
+input[type='submit'],
+a[role='button'] {
+  --button-bg-color: var(--color-primary);
+  --button-bg-color-hover: var(--color-secondary);
+  background: hsl(var(--button-bg-color));
+  @apply w-auto p-2 text-center uppercase text-white transition;
+}
+
+:hover:is(button, input[type='submit'], a[role='button']) {
+  background: hsl(var(--button-bg-color-hover));
+}
+
+.bg-secondary {
+  --button-bg-color: var(--color-secondary);
+  --button-bg-color-hover: var(--color-secondary-dark);
+}

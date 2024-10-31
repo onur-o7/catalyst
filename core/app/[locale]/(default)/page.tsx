@@ -63,13 +63,13 @@ export default async function Home({ params: { locale } }: Props) {
       <div className="my-10">
         <ProductCardCarousel
           products={featuredProducts}
-          showCart={false}
+          showCart={true}
           showCompare={false}
           title={t('Carousel.featuredProducts')}
         />
         <ProductCardCarousel
           products={newestProducts}
-          showCart={false}
+          showCart={true}
           showCompare={false}
           title={t('Carousel.newestProducts')}
         />

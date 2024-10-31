@@ -11,20 +11,25 @@ const config = {
         transparent: 'transparent',
         current: 'currentColor',
         black: '#000000',
-        primary: '#053FB0',
-        secondary: '#3071EF',
+        body: 'hsl(var(--color-body))',
+        primary: 'hsl(var(--color-primary))',
+        secondary: 'hsl(var(--color-secondary))',
         white: '#FFFFFF',
         error: {
-          DEFAULT: '#AD0000',
+          DEFAULT: '#ab3030',
           secondary: '#C62828',
         },
         success: {
           DEFAULT: '#146622',
           secondary: '#388E3C',
         },
+        turq: {
+          dark: '#348d8b',
+          DEFAULT: '#61c5c3',
+        },
         gray: {
-          100: '#F1F3F5',
-          200: '#CFD8DC',
+          100: '#f7f7f7',
+          200: '#f2f3f8',
           300: '#AFBAC5',
           400: '#90A4AE',
           500: '#546E7A',
@@ -32,7 +37,8 @@ const config = {
         },
       },
       fontFamily: {
-        sans: ['var(--font-inter)'],
+        sans: ['var(--ff-gotham)'],
+        display: ['var(--ff-butler)'],
       },
       borderColor: {
         DEFAULT: '#CFD8DC',
@@ -45,6 +51,9 @@ const config = {
       },
       animation: {
         revealVertical: 'revealVertical 400ms forwards cubic-bezier(0, 1, 0.25, 1)',
+      },
+      gridTemplateColumns: {
+        avatar: '48px auto',
       },
     },
   },

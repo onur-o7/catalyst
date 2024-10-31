@@ -1,7 +1,7 @@
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import localFont from 'next/font/local';
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 import { unstable_setRequestLocale } from 'next-intl/server';
 import { PropsWithChildren } from 'react';
@@ -15,10 +15,77 @@ import { revalidate } from '~/client/revalidate-target';
 import { Notifications } from '../notifications';
 import { Providers } from '../providers';
 
-const inter = Inter({
-  subsets: ['latin'],
+const gotham = localFont({
+  src: [
+    {
+      path: './fonts/GothamGreek-Light.woff2',
+      weight: '300',
+      style: 'normal',
+    },
+
+    {
+      path: './fonts/GothamGreek-Book.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: './fonts/GothamGreek-Medium.woff2',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: './fonts/GothamGreek-Medium.woff2',
+      weight: '700',
+      style: 'normal',
+    },
+  ],
   display: 'swap',
-  variable: '--font-inter',
+  variable: '--ff-gotham',
+});
+
+const butler = localFont({
+  src: [
+    {
+      path: './fonts/Butler-UltraLight.woff2',
+      weight: '200',
+      style: 'normal',
+    },
+
+    {
+      path: './fonts/Butler-Light.woff2',
+      weight: '300',
+      style: 'normal',
+    },
+
+    {
+      path: './fonts/Butler.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: './fonts/Butler-Medium.woff2',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: './fonts/Butler-Bold.woff2',
+      weight: '700',
+      style: 'normal',
+    },
+    {
+      path: './fonts/Butler-ExtraBold.woff2',
+      weight: '800',
+      style: 'normal',
+    },
+
+    {
+      path: './fonts/Butler-Black.woff2',
+      weight: '900',
+      style: 'normal',
+    },
+  ],
+  display: 'swap',
+  variable: '--ff-butler',
 });
 
 const RootLayoutMetadataQuery = graphql(`
@@ -88,13 +155,13 @@ export default function RootLayout({ children, params: { locale } }: Props) {
   const messages = useMessages();
 
   return (
-    <html className={`${inter.variable} font-sans`} lang={locale}>
-      <body className="flex h-screen min-w-[375px] flex-col">
-        <Notifications />
+    <html className={`${gotham.variable} ${butler.variable} font-sans`} lang={locale}>
+      <body className="flex h-screen min-w-[375px] flex-col bg-white">
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Providers>{children}</Providers>
         </NextIntlClientProvider>
         <VercelComponents />
+        <Notifications />
       </body>
     </html>
   );

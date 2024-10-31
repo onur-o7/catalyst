@@ -6,7 +6,8 @@ export type RecordFromLocales = {
 
 // Set overrides per locale
 const localeToChannelsMappings: Partial<RecordFromLocales> = {
-  // es: '12345',
+  en: '1',
+  el: '1481393',
 };
 
 function getChannelIdFromLocale(locale?: string) {
