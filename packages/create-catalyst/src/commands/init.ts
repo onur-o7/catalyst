@@ -3,11 +3,13 @@ import { input, select } from '@inquirer/prompts';
 import chalk from 'chalk';
 import * as z from 'zod';
 
-import { checkStorefrontLimit } from '../utils/check-storefront-limit';
 import { Https } from '../utils/https';
 import { login } from '../utils/login';
 import { parse } from '../utils/parse';
+import { Telemetry } from '../utils/telemetry/telemetry';
 import { writeEnv } from '../utils/write-env';
+
+const telemetry = new Telemetry();
 
 export const init = new Command('init')
   .description('Connect a BigCommerce store with an existing Catalyst project')
@@ -51,16 +53,24 @@ export const init = new Command('init')
       process.exit(1);
     }
 
+    await telemetry.identify(storeHash);
+
     const bc = new Https({ bigCommerceApiUrl, storeHash, accessToken });
+    const sampleDataApi = new Https({
+      sampleDataApiUrl,
+      storeHash,
+      accessToken,
+    });
 
-    const availableChannels = await bc.channels('?available=true&type=storefront');
-    const storeInfo = await bc.storeInformation();
+    const eligibilityResponse = await sampleDataApi.checkEligibility();
 
-    const canCreateChannel = checkStorefrontLimit(availableChannels, storeInfo);
+    if (!eligibilityResponse.data.eligible) {
+      console.warn(chalk.yellow(eligibilityResponse.data.message));
+    }
 
     let shouldCreateChannel;
 
-    if (canCreateChannel) {
+    if (eligibilityResponse.data.eligible) {
       shouldCreateChannel = await select({
         message: 'Would you like to create a new channel?',
         choices: [
@@ -73,12 +83,6 @@ export const init = new Command('init')
     if (shouldCreateChannel) {
       const newChannelName = await input({
         message: 'What would you like to name your new channel?',
-      });
-
-      const sampleDataApi = new Https({
-        sampleDataApiUrl,
-        storeHash,
-        accessToken,
       });
 
       const {
@@ -95,6 +99,8 @@ export const init = new Command('init')
 
     if (!shouldCreateChannel) {
       const channelSortOrder = ['catalyst', 'next', 'bigcommerce'];
+
+      const availableChannels = await bc.channels('?available=true&type=storefront');
 
       const existingChannel = await select({
         message: 'Which channel would you like to use?',

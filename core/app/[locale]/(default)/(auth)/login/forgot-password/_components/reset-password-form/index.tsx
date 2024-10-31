@@ -34,7 +34,7 @@ interface FormStatus {
 }
 
 const SubmitButton = () => {
-  const t = useTranslations('Reset.Form');
+  const t = useTranslations('Login.ForgotPassword.Form');
 
   const { pending } = useFormStatus();
 
@@ -52,7 +52,7 @@ const SubmitButton = () => {
 };
 
 export const ResetPasswordForm = ({ reCaptchaSettings }: Props) => {
-  const t = useTranslations('Reset.Form');
+  const t = useTranslations('Login.ForgotPassword.Form');
 
   const form = useRef<HTMLFormElement>(null);
   const [formStatus, setFormStatus] = useState<FormStatus | null>(null);
@@ -80,7 +80,7 @@ export const ResetPasswordForm = ({ reCaptchaSettings }: Props) => {
   };
 
   const handleEmailValidation = (e: ChangeEvent<HTMLInputElement>) => {
-    const validationStatus = e.target.validity.valueMissing;
+    const validationStatus = e.target.validity.valueMissing || e.target.validity.typeMismatch;
 
     setIsEmailValid(!validationStatus);
   };
@@ -144,8 +144,14 @@ export const ResetPasswordForm = ({ reCaptchaSettings }: Props) => {
             />
           </FieldControl>
           <FieldMessage
-            className="absolute inset-x-0 bottom-0 inline-flex w-full text-sm text-gray-500"
+            className="absolute inset-x-0 bottom-0 inline-flex w-full text-xs text-error"
             match="valueMissing"
+          >
+            {t('emailValidationMessage')}
+          </FieldMessage>
+          <FieldMessage
+            className="absolute inset-x-0 bottom-0 inline-flex w-full text-xs text-error"
+            match="typeMismatch"
           >
             {t('emailValidationMessage')}
           </FieldMessage>
@@ -159,7 +165,7 @@ export const ResetPasswordForm = ({ reCaptchaSettings }: Props) => {
               sitekey={reCaptchaSettings.siteKey}
             />
             {!isReCaptchaValid && (
-              <span className="absolute inset-x-0 bottom-0 inline-flex w-full text-xs font-normal text-red-200">
+              <span className="absolute inset-x-0 bottom-0 inline-flex w-full text-xs text-error">
                 {t('recaptchaText')}
               </span>
             )}

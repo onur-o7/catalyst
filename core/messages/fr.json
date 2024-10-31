@@ -32,7 +32,7 @@
             "entePasswordMessage": "Veuillez saisir votre mot de passe.",
             "submitting": "Envoi...",
             "logIn": "Connexion",
-            "resetPassword": "Mot de passe oublié ?"
+            "forgotPassword": "Mot de passe oublié ?"
         },
         "CreateAccount": {
             "heading": "Nouveau client ?",
@@ -41,12 +41,28 @@
             "multipleAddresses": "Enregistrer plusieurs adresses de livraison",
             "ordersHistory": "Accéder à votre historique de commande",
             "ordersTracking": "Suivre les nouvelles commandes",
-            "wishlists": "Enregistrer des articles dans votre liste d'envies",
+            "wishlists": "Enregistrer les articles dans votre liste d'envies",
             "createLink": "Créer un compte "
+        },
+        "ForgotPassword": {
+            "title": "Mot de passe oublié",
+            "heading": "Mot de passe oublié",
+            "Form": {
+                "description": "Veuillez saisir ci-dessous l'adresse e-mail associée à votre compte. Nous vous enverrons des instructions pour réinitialiser votre mot de passe.",
+                "emailLabel": "E-mail",
+                "emailValidationMessage": "Veuillez saisir une adresse e-mail valide, telle que nom@domaine.com",
+                "recaptchaText": "Réussir le test ReCAPTCHA",
+                "confirmResetPassword": "Si l'adresse e-mail {email} est liée à un compte dans notre boutique, vous recevrez un e-mail pour réinitialiser votre mot de passe. Veuillez consulter votre boîte de réception, ainsi que votre dossier de courrier indésirable si vous ne trouvez pas cet e-mail.",
+                "submitting": "Envoi...",
+                "submit": "Réinitialiser le mot de passe"
+            },
+            "Errors": {
+                "error": "Erreur inconnue."
+            }
         }
     },
     "Register": {
-        "title": "Register account",
+        "title": "Enregistrer un compte",
         "heading": "Nouveau compte",
         "Form": {
             "submit": "Créer un compte",
@@ -58,22 +74,6 @@
             "inputError": "Un problème est survenu lors du traitement des saisies de l'utilisateur.",
             "apiError": "Il semble qu'une erreur de serveur se soit produite, veuillez réessayer dans quelques minutes.",
             "error": "Une erreur s'est produite. Veuillez réessayer plus tard."
-        }
-    },
-    "Reset": {
-        "title": "Réinitialiser le mot de passe",
-        "heading": "Réinitialiser le mot de passe",
-        "Form": {
-            "description": "Veuillez saisir ci-dessous l'adresse e-mail associée à votre compte. Nous vous enverrons des instructions pour réinitialiser votre mot de passe.",
-            "emailLabel": "E-mail",
-            "emailValidationMessage": "Veuillez saisir une adresse e-mail valide, telle que nom@domaine.com",
-            "recaptchaText": "Réussir le test ReCAPTCHA",
-            "confirmResetPassword": "Si l'adresse e-mail {email} est liée à un compte dans notre boutique, vous recevrez un e-mail pour réinitialiser votre mot de passe. Veuillez consulter votre boîte de réception, ainsi que votre dossier de courrier indésirable si vous ne trouvez pas cet e-mail.",
-            "submitting": "Envoi...",
-            "submit": "Réinitialiser le mot de passe"
-        },
-        "Errors": {
-            "error": "Erreur inconnue."
         }
     },
     "FacetedGroup": {
@@ -122,7 +122,11 @@
     "Category": {
         "sortBy": "{items, plural, =0 {aucun article} =1 {1 article} other {# articles}}",
         "products": "Produits",
-        "items": "articles"
+        "items": "articles",
+        "Empty": {
+            "message": "Aucun produit dans cette catégorie",
+            "cta": "Retour à l’accueil"
+        }
     },
     "Search": {
         "title": "Résultats de recherche",
@@ -133,6 +137,7 @@
     },
     "Account": {
         "Home": {
+            "title": "Mon compte",
             "heading": "Mon compte",
             "accountTabsLabel": "Onglets Compte",
             "orders": "Commandes",
@@ -157,9 +162,9 @@
                 "Form": {
                     "recaptchaText": "Réussir le test ReCAPTCHA",
                     "submit": "Ajouter une nouvelle adresse",
-                    "submitting": "Saving address...",
+                    "submitting": "Enregistrer l'adresse...",
                     "cancel": "Annuler",
-                    "success": "Address added to your account.",
+                    "success": "Adresse ajoutée à votre compte.",
                     "Errors": {
                         "inputError": "Un problème est survenu lors du traitement des saisies de l'utilisateur.",
                         "error": "Erreur inconnue."
@@ -172,12 +177,12 @@
                 "Form": {
                     "recaptchaText": "Réussir le test ReCAPTCHA",
                     "submit": "Modifier l'adresse",
-                    "submitting": "Updating address...",
+                    "submitting": "Mise à jour de l'adresse...",
                     "cancel": "Annuler",
                     "confirmDeleteAddress": "Supprimer l'adresse",
                     "deleteModalTitle": "Voulez-vraiment supprimer cette adresse ?",
                     "deleteButton": "Supprimer",
-                    "success": "The address has been successfully updated.",
+                    "success": "L'adresse a bien été mise à jour.",
                     "Errors": {
                         "inputError": "Un problème est survenu lors du traitement des saisies de l'utilisateur.",
                         "notFound": "L'adresse n'existe pas",
@@ -362,7 +367,7 @@
             "sku": "SKU",
             "upc": "CUP",
             "minPurchase": "Quantité minimale d'achat",
-            "maxPurchase": "Achat maximum",
+            "maxPurchase": "Quantité maximale d'achat",
             "availability": "Disponibilité",
             "condition": "Condition",
             "weight": "Poids",

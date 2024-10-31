@@ -32,7 +32,7 @@
             "entePasswordMessage": "Introduce tu contraseña.",
             "submitting": "Enviando...",
             "logIn": "Iniciar sesión",
-            "resetPassword": "¿Olvidó su contraseña?"
+            "forgotPassword": "¿Olvidó su contraseña?"
         },
         "CreateAccount": {
             "heading": "¿Cliente nuevo?",
@@ -43,10 +43,26 @@
             "ordersTracking": "Hacer seguimiento de pedidos nuevos",
             "wishlists": "Guardar artículos en su lista de deseos",
             "createLink": "Crear cuenta "
+        },
+        "ForgotPassword": {
+            "title": "Olvidé mi contraseña",
+            "heading": "Olvidé mi contraseña",
+            "Form": {
+                "description": "Introduce a continuación la dirección de correo electrónico asociada a tu cuenta. Te enviaremos instrucciones para restablecer tu contraseña.",
+                "emailLabel": "Correo electrónico",
+                "emailValidationMessage": "Introduce un correo electrónico válido, como nombre@dominio.com",
+                "recaptchaText": "Pasar la verificación ReCAPTCHA",
+                "confirmResetPassword": "Si la dirección de correo electrónico {email} está vinculada a una cuenta en nuestra tienda, te hemos enviado un correo electrónico de restablecimiento de contraseña. Comprueba tu bandeja de entrada y tu carpeta de correo no deseado si no lo ves.",
+                "submitting": "Enviando...",
+                "submit": "Restablecer la contraseña"
+            },
+            "Errors": {
+                "error": "Error desconocido."
+            }
         }
     },
     "Register": {
-        "title": "Register account",
+        "title": "Registrar cuenta",
         "heading": "Cuenta nueva",
         "Form": {
             "submit": "Crear cuenta",
@@ -58,22 +74,6 @@
             "inputError": "Algo salió mal al procesar los datos del usuario.",
             "apiError": "Estamos teniendo problemas con el servidor. Vuelve a intentarlo en unos minutos.",
             "error": "Algo salió mal. Vuelva a intentarlo más tarde."
-        }
-    },
-    "Reset": {
-        "title": "Restablecer la contraseña",
-        "heading": "Restablecer la contraseña",
-        "Form": {
-            "description": "Introduce a continuación la dirección de correo electrónico asociada a tu cuenta. Te enviaremos instrucciones para restablecer tu contraseña.",
-            "emailLabel": "Correo electrónico",
-            "emailValidationMessage": "Introduce un correo electrónico válido, como nombre@dominio.com",
-            "recaptchaText": "Pasar la verificación ReCAPTCHA",
-            "confirmResetPassword": "Si la dirección de correo electrónico {email} está vinculada a una cuenta en nuestra tienda, te hemos enviado un correo electrónico de restablecimiento de contraseña. Comprueba tu bandeja de entrada y tu carpeta de correo no deseado si no lo ves.",
-            "submitting": "Enviando...",
-            "submit": "Restablecer la contraseña"
-        },
-        "Errors": {
-            "error": "Error desconocido."
         }
     },
     "FacetedGroup": {
@@ -122,7 +122,11 @@
     "Category": {
         "sortBy": "{items, plural, =0 {no items} =1 {1 item} other {# items}}",
         "products": "Productos",
-        "items": "artículos"
+        "items": "artículos",
+        "Empty": {
+            "message": "No products in this category",
+            "cta": "Return to Home"
+        }
     },
     "Search": {
         "title": "Resultados de la búsqueda",
@@ -133,6 +137,7 @@
     },
     "Account": {
         "Home": {
+            "title": "Mi cuenta",
             "heading": "Mi cuenta",
             "accountTabsLabel": "Pestañas de la cuenta",
             "orders": "Pedidos",
@@ -157,9 +162,9 @@
                 "Form": {
                     "recaptchaText": "Pasar la verificación ReCAPTCHA",
                     "submit": "Añadir nueva dirección",
-                    "submitting": "Saving address...",
+                    "submitting": "Guardando dirección...",
                     "cancel": "Cancelar",
-                    "success": "Address added to your account.",
+                    "success": "Dirección añadida a tu cuenta.",
                     "Errors": {
                         "inputError": "Algo salió mal al procesar los datos del usuario.",
                         "error": "Error desconocido."
@@ -172,12 +177,12 @@
                 "Form": {
                     "recaptchaText": "Pasar la verificación ReCAPTCHA",
                     "submit": "Editar dirección",
-                    "submitting": "Updating address...",
+                    "submitting": "Actualizando dirección...",
                     "cancel": "Cancelar",
                     "confirmDeleteAddress": "Eliminar dirección",
                     "deleteModalTitle": "¿Está seguro de que desea eliminar esta dirección?",
                     "deleteButton": "Eliminar",
-                    "success": "The address has been successfully updated.",
+                    "success": "La dirección se ha actualizado correctamente.",
                     "Errors": {
                         "inputError": "Algo salió mal al procesar los datos del usuario.",
                         "notFound": "La dirección no existe.",
@@ -399,7 +404,7 @@
         }
     },
     "Maintenance": {
-        "title": "Maintenance",
+        "title": "Mantenimiento",
         "message": "Estamos fuera de servicio por mantenimiento",
         "contactUs": "Puedes ponerte en contacto con nosotros en:"
     },

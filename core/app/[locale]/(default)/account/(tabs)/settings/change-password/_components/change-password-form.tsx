@@ -132,32 +132,27 @@ export const ChangePasswordForm = () => {
   const handleCurrentPasswordChange = (e: ChangeEvent<HTMLInputElement>) =>
     setIsCurrentPasswordValid(!e.target.validity.valueMissing);
 
-  const handleNewPasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
-    let formData;
+  const validateNewAndConfirmPasswords = (formData: FormData) => {
+    const newPasswordValid = validatePasswords('new-password', formData);
+    const confirmPassword = formData.get('confirm-password');
+    const confirmPasswordValid = confirmPassword
+      ? validatePasswords('confirm-password', formData)
+      : true;
 
-    if (e.target.form) {
-      formData = new FormData(e.target.form);
-    }
-
-    const confirmPassword = formData?.get('confirm-password');
-    const isValid = confirmPassword
-      ? validatePasswords('new-password', formData) &&
-        validatePasswords('confirm-password', formData)
-      : validatePasswords('new-password', formData);
-
-    setIsNewPasswordValid(isValid);
+    setIsNewPasswordValid(newPasswordValid);
+    setIsConfirmPasswordValid(confirmPasswordValid);
   };
 
-  const handleConfirmPasswordValidation = (e: ChangeEvent<HTMLInputElement>) => {
+  const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
     let formData;
 
     if (e.target.form) {
       formData = new FormData(e.target.form);
     }
 
-    const isValid = validatePasswords('confirm-password', formData);
-
-    setIsConfirmPasswordValid(isValid);
+    if (formData) {
+      validateNewAndConfirmPasswords(formData);
+    }
   };
 
   return (
@@ -185,7 +180,7 @@ export const ChangePasswordForm = () => {
             />
           </FieldControl>
           <FieldMessage
-            className="absolute inset-x-0 bottom-0 inline-flex w-full text-sm text-error"
+            className="absolute inset-x-0 bottom-0 inline-flex w-full text-xs text-error"
             match="valueMissing"
           >
             {t('notEmptyMessage')}
@@ -200,43 +195,23 @@ export const ChangePasswordForm = () => {
               autoComplete="none"
               error={!isNewPasswordValid}
               id="new-password"
-              onChange={handleNewPasswordChange}
-              onInvalid={handleNewPasswordChange}
+              onChange={handlePasswordChange}
+              onInvalid={handlePasswordChange}
               required
               type="password"
             />
           </FieldControl>
           <FieldMessage
-            className="absolute inset-x-0 bottom-0 inline-flex w-full text-sm text-error"
+            className="absolute inset-x-0 bottom-0 inline-flex w-full text-xs text-error"
             match="valueMissing"
           >
             {t('notEmptyMessage')}
           </FieldMessage>
-          <FieldMessage
-            className="absolute inset-x-0 inline-flex w-full text-sm text-error md:bottom-0"
-            match={(newPasswordValue: string, formData: FormData) => {
-              const currentPasswordValue = formData.get('current-password');
-              const confirmPassword = formData.get('confirm-password');
-              let isMatched;
-
-              if (confirmPassword) {
-                isMatched =
-                  newPasswordValue !== currentPasswordValue && newPasswordValue === confirmPassword;
-
-                setIsNewPasswordValid(isMatched);
-
-                return !isMatched;
-              }
-
-              isMatched = currentPasswordValue === newPasswordValue;
-
-              setIsNewPasswordValid(!isMatched);
-
-              return isMatched;
-            }}
-          >
-            {t('newPasswordValidationMessage')}
-          </FieldMessage>
+          {!isNewPasswordValid && (
+            <FieldMessage className="absolute inset-x-0 inline-flex w-full text-xs text-error md:bottom-0">
+              {t('newPasswordValidationMessage')}
+            </FieldMessage>
+          )}
         </Field>
         <Field className="relative space-y-2 pb-7" name="confirm-password">
           <FieldLabel htmlFor="confirm-password" isRequired={true}>
@@ -247,31 +222,23 @@ export const ChangePasswordForm = () => {
               autoComplete="none"
               error={!isConfirmPasswordValid}
               id="confirm-password"
-              onChange={handleConfirmPasswordValidation}
-              onInvalid={handleConfirmPasswordValidation}
+              onChange={handlePasswordChange}
+              onInvalid={handlePasswordChange}
               required
               type="password"
             />
           </FieldControl>
           <FieldMessage
-            className="absolute inset-x-0 bottom-0 inline-flex w-full text-sm text-error"
+            className="absolute inset-x-0 bottom-0 inline-flex w-full text-xs text-error"
             match="valueMissing"
           >
             {t('notEmptyMessage')}
           </FieldMessage>
-          <FieldMessage
-            className="absolute inset-x-0 bottom-0 inline-flex w-full text-sm text-error"
-            match={(confirmPassword: string, formData: FormData) => {
-              const newPassword = formData.get('new-password');
-              const isMatched = confirmPassword === newPassword;
-
-              setIsConfirmPasswordValid(isMatched);
-
-              return !isMatched;
-            }}
-          >
-            {t('confirmPasswordValidationMessage')}
-          </FieldMessage>
+          {!isConfirmPasswordValid && (
+            <FieldMessage className="absolute inset-x-0 bottom-0 inline-flex w-full text-xs text-error">
+              {t('confirmPasswordValidationMessage')}
+            </FieldMessage>
+          )}
         </Field>
         <div className="flex flex-col justify-start gap-4 md:flex-row">
           <FormSubmit asChild>

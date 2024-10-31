@@ -2,4 +2,4 @@
 "@bigcommerce/catalyst-core": patch
 ---
 
-Add additional IP address header
+update styles for reset password validation

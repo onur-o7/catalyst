@@ -32,7 +32,7 @@
             "entePasswordMessage": "Digite sua senha",
             "submitting": "Enviando...",
             "logIn": "Credencial de acesso",
-            "resetPassword": "Esqueceu sua senha?"
+            "forgotPassword": "Esqueceu sua senha?"
         },
         "CreateAccount": {
             "heading": "Cliente novo?",
@@ -43,10 +43,26 @@
             "ordersTracking": "Rastrear novos pedidos",
             "wishlists": "Salvar itens na sua lista de desejos",
             "createLink": "Criar conta "
+        },
+        "ForgotPassword": {
+            "title": "Esqueci a senha",
+            "heading": "Esqueci a senha",
+            "Form": {
+                "description": "Insira abaixo o e-mail associado à sua conta. Enviaremos instruções para redefinir sua senha.",
+                "emailLabel": "Email",
+                "emailValidationMessage": "Insira um e-mail válido, como nome@dominio.com",
+                "recaptchaText": "Passar na verificação ReCAPTCHA",
+                "confirmResetPassword": "Se o endereço de e-mail {email} está vinculado a uma conta na nossa loja, enviamos um e-mail de redefinição de senha. Verifique sua caixa de entrada e, caso não encontre, confira a pasta de spam.",
+                "submitting": "Enviando...",
+                "submit": "Redefinir senha"
+            },
+            "Errors": {
+                "error": "Erro desconhecido."
+            }
         }
     },
     "Register": {
-        "title": "Register account",
+        "title": "Registrar conta",
         "heading": "Nova conta",
         "Form": {
             "submit": "Criar conta",
@@ -58,22 +74,6 @@
             "inputError": "Houve um erro no processamento da entrada do usuário.",
             "apiError": "Ocorreu um erro no servidor. Tente novamente em alguns minutos.",
             "error": "Ocorreu um erro. Tente novamente mais tarde."
-        }
-    },
-    "Reset": {
-        "title": "Redefinir senha",
-        "heading": "Redefinir senha",
-        "Form": {
-            "description": "Insira abaixo o e-mail associado à sua conta. Enviaremos instruções para redefinir sua senha.",
-            "emailLabel": "Email",
-            "emailValidationMessage": "Insira um e-mail válido, como nome@dominio.com",
-            "recaptchaText": "Passar na verificação ReCAPTCHA",
-            "confirmResetPassword": "Se o endereço de e-mail {email} está vinculado a uma conta na nossa loja, enviamos um e-mail de redefinição de senha. Verifique sua caixa de entrada e, caso não encontre, confira a pasta de spam.",
-            "submitting": "Enviando...",
-            "submit": "Redefinir senha"
-        },
-        "Errors": {
-            "error": "Erro desconhecido."
         }
     },
     "FacetedGroup": {
@@ -122,7 +122,11 @@
     "Category": {
         "sortBy": "{items, plural, =0 {no items} =1 {1 item} other {# itens}}",
         "products": "Produtos",
-        "items": "itens"
+        "items": "itens",
+        "Empty": {
+            "message": "No products in this category",
+            "cta": "Return to Home"
+        }
     },
     "Search": {
         "title": "Resultados da pesquisa",
@@ -133,6 +137,7 @@
     },
     "Account": {
         "Home": {
+            "title": "Minha conta",
             "heading": "Minha conta",
             "accountTabsLabel": "Abas da conta",
             "orders": "Pedidos",
@@ -157,9 +162,9 @@
                 "Form": {
                     "recaptchaText": "Passar na verificação ReCAPTCHA",
                     "submit": "Adicionar novo endereço",
-                    "submitting": "Saving address...",
+                    "submitting": "Salvando endereço...",
                     "cancel": "Cancelar",
-                    "success": "Address added to your account.",
+                    "success": "Endereço adicionado à sua conta.",
                     "Errors": {
                         "inputError": "Houve um erro no processamento da entrada do usuário.",
                         "error": "Erro desconhecido."
@@ -172,12 +177,12 @@
                 "Form": {
                     "recaptchaText": "Passar na verificação ReCAPTCHA",
                     "submit": "Editar endereço",
-                    "submitting": "Updating address...",
+                    "submitting": "Atualizando endereço...",
                     "cancel": "Cancelar",
                     "confirmDeleteAddress": "Excluir endereço",
                     "deleteModalTitle": "Deseja mesmo excluir esse endereço?",
                     "deleteButton": "Excluir",
-                    "success": "The address has been successfully updated.",
+                    "success": "O endereço foi atualizado.",
                     "Errors": {
                         "inputError": "Houve um erro no processamento da entrada do usuário.",
                         "notFound": "O endereço não existe.",
@@ -399,7 +404,7 @@
         }
     },
     "Maintenance": {
-        "title": "Maintenance",
+        "title": "Manutenção",
         "message": "Estamos em manutenção",
         "contactUs": "Entre em contato conosco em:"
     },
